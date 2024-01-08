@@ -148,7 +148,36 @@
         - NOTE LIST
        -->
 
-       <div class="note-list" data-note-panel></div>
+       <div class="note-list" data-note-panel>
+        <div class="card">
+            <h3 class="card-title text-title-medium">Note title</h3>
+            <p class="card-text text-body-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="wrapper">
+                <span class="card-time text-label-larg">20 min ago</span>
+
+                <button class="icon-btn large" aria-label="Delete note" data-tooltip="Delete note">
+                    <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+
+                    <div class="state-layer"></div>
+                </button>
+            </div>
+
+            <div class="state-layer"></div>
+        </div>
+       </div>
+
+       <!--
+        - FAB button for mobile
+       -->
+
+       <button class="fab" aria-label="New note" data-note-create-btn>
+        <span class="material-symbols-rounded" aria-hidden="true">add</span>
+
+        <!--<span class="text text-label-large">New Note</span>-->
+
+        <div class="state-layer"></div>
+       </button>
 
     </main>
 <!--
