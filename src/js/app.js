@@ -17,6 +17,9 @@ import {
 } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
+import { client } from "./client.js";
+
+
 
 /**
  * Toggle sidebar in small screen
@@ -114,6 +117,6 @@ const createNotebook = function (event) {
         this.parentElement.remove();
 
         // Render navItem
-
+        client.notebook.create(notebookData);
     }
 }

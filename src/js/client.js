@@ -6,6 +6,16 @@
 
 
 /**
+ * Import module
+ */
+import { NavItem } from "./components/NavItem";
+import { activeNotebook } from "./utils";
+
+
+const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
+const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
+
+/**
  * The client object manages interactions with the user interface (UI) to create , read ,update, and delete notebooks and notes.
  * It provides functions for performing thses operations and updating the UI accordingly.
  * 
@@ -21,7 +31,12 @@ export const client = {
          * @param {*} notebookData - Data representing the new notebook.
          */
         create(notebookData) {
-            const /** {HTMLElement} */ $navItem = NavItem();
+            const /** {HTMLElement} */ $navItem = NavItem(notebookData.id,notebookData.name);
+            $sidebarList.appendChild($navItem);
+            activeNotebook.call($navItem);
+            $notePanelTitle.textContent = notebookData.name;
         }
+
     }
+
 }
