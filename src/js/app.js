@@ -16,6 +16,7 @@ import {
     makeElemEditable 
 } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
+import { db } from "./db.js";
 
 /**
  * Toggle sidebar in small screen
@@ -107,8 +108,12 @@ $addNotebookBtn.addEventListener('click', showNotebookField);
 const createNotebook = function (event) {
 
     if (event.key === 'Enter') {
-        
+
         // Store new created notebook in database
+        const /** {Object} */ notebookData = db.post.notebook(this.textContent || 'Untitled'); //this: $navItemField
+        this.parentElement.remove();
+
+        // Render navItem
 
     }
 }
