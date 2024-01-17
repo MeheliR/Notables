@@ -3,7 +3,7 @@
 \*-----------------------------------*/
 
 /**
- * copyright 2023 codewithsadee
+ * copyright 2024 meheliroy
  */
 
 
@@ -871,6 +871,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   align-content: flex-start;
+  flex-grow: 1;
   align-items: stretch;
   gap: var(--spacing-2);
 }
