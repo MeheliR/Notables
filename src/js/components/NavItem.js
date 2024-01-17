@@ -4,10 +4,17 @@
 
 'use strict';
 
+
 /**
  * Import
  */
-import { Tooltip } from "./Tooltip";
+import { Tooltip } from "./Tooltip.js";
+import { activeNotebook, makeElemEditable } from "../utils.js";
+import { db } from "../db.js";
+import { client } from "../client.js";
+import { DeleteConfirmModal } from "./Modal.js";
+
+const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 
 /**
  * Creates a navigation item representing a notebook.This item displays the notebooks's name, allows editing
@@ -42,8 +49,64 @@ export const NavItem = function (id, name) {
     `;
 
     //Show tooltip on edit and delete button
-    const /** {Array<HTMLElemnent>} */ $tooltipElems = $navItem.querySelectorAll('data-tooltip');
+    const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('data-tooltip');
     $tooltipElems.forEach($elem => Tooltip($elem));
+
+    /**
+     * Handles the click event on the navigation item.Updates the note panel's title, retrieves the associated notes,
+     * and marks the item as active.
+     */
+    $navItem.addEventListener('click', function () {
+        $notePanelTitle.textContent = name;
+        activeNotebook.call(this);
+
+        const /** {Array} */ noteList = db.get.note(this.dataset.notebook);
+        client.note.read(noteList);
+    });
+
+    /**
+     * Notebook edit functionality
+     */
+    const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
+    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-delete-btn]');
+    $navItemEditBtn.addEventListener('click', makeElemEditable.bind(null, $navItemField));
+
+    $navItemField.addEventListener('keydown', function (event) {
+
+        if (event.key === 'Enter') {
+            this.removeAttribute('contendeditable');
+
+            // Update edited data in database
+            const updatedNotebookData = db.update.notebook(id, this.textContent);
+
+            //Render updated notebook
+            client.notebook.update(id, updatedNotebookData);
+
+        }
+
+    });
+
+
+    /**
+     * Notebook delete functionality
+     */
+    const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn');
+    $navItemDeleteBtn.addEventListener('click', function () {
+
+        const /** {Object} */ modal = DeleteConfirmModal(name);
+
+        modal.open();
+
+        modal.onSubmit(function (isConfirm) {
+            if (isConfirm) {
+                db.delete.notebook(id);
+                client.notebook.delete(id);
+            }
+
+            modal.close();
+        });
+
+    });
 
     return $navItem;
 }
