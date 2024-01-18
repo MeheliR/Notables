@@ -30,7 +30,7 @@ const /** {string} */ emptyNotesTemplate =  `
 /**
  * Enables or disables "Create Note" buttons based on whether there are any notebooks.
  * 
- * @param {*} isThereAnyNotebooks - Indicates whether there are any notebooks.
+ * @param {boolean} isThereAnyNotebooks - Indicates whether there are any notebooks.
  */
 const disableNoteCreateBtns = function (isThereAnyNotebooks) {
     $noteCreateBtns.forEach($item => {
@@ -47,7 +47,9 @@ const disableNoteCreateBtns = function (isThereAnyNotebooks) {
  * @property {Object} note - Functions for managing notes in the UI.
  */
 export const client = {
+
     notebook: {
+
         /**
          * Creates a new notebook in the UI, based on provided notebook data.
          * 
@@ -81,6 +83,7 @@ export const client = {
                 $sidebarList.appendChild($navItem);
             });
         },
+
         /**
          * Updates the UI to reflect changes in a notebook.
          * 
@@ -88,7 +91,7 @@ export const client = {
          * @param {Object} notebookData - New data for the notebook.
          */
         update(notebookId, notebookData) {
-            const /** {HTMLElement} */ $oldNotebook = document.querySelector(`[data-notebook="${notebookId}]"`);
+            const /** {HTMLElement} */ $oldNotebook = document.querySelector(`[data-notebook="${notebookId}"`);
             const /** {HTMLElement} */ $newNotebook = NavItem(notebookData.id, notebookData.name);
 
             $notePanelTitle.textContent = notebookData.name;
@@ -152,9 +155,7 @@ export const client = {
                 });
             } else {
                 $notePanel.innerHTML = emptyNotesTemplate;
-            }
-
-            
+            }   
 
         },
 
