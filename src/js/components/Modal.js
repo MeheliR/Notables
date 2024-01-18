@@ -28,8 +28,8 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note...', time 
             <span class="material-symbols-rounded" aria-hidden="true">close</span>
 
             <div class="state-layer"></div>
-
         </button>
+
         <input type="text" placeholder="Untitled" value="${title}" class="modal-title text-title-medium" data-note-field>
 
         <textarea placeholder="Take a note..." class="modal-text text-body-large custom-scrollbar" data-note-field>${text}</textarea>
@@ -74,13 +74,13 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note...', time 
     const close = function () {
         document.body.removeChild($modal);
         document.body.removeChild($overlay);
-        $titleField.focus();
     }
 
     //Attach click event to closeBtn, when click call the close modal function
     const /** {HTMLElement} */ $closeBtn = $modal.querySelector('[data-close-btn]');
     $closeBtn.addEventListener('click', close);
 
+    
     /**
      * Handles the submission of a note within the modal.
      * 
@@ -119,7 +119,7 @@ const DeleteConfirmModal = function (title) {
             Are you sure you want to delete <strong>"${title}"</strong>?
         </h3>
         <div class="modal-footer">
-            <button class="btn text" data-action-btn="false'>
+            <button class="btn text" data-action-btn="false">
                 <span class="text-label-large">Cancel</span>
 
                 <div class="state-layer"></div>
@@ -153,6 +153,7 @@ const DeleteConfirmModal = function (title) {
 
 
     const /** {Array<HTMLElement>} */ $actionBtns = $modal.querySelectorAll('[data-action-btn]');
+
     /**
      * Handles the submission of the delete confirmation.
      * 
