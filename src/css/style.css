@@ -6,10 +6,6 @@
  * copyright 2024 meheliroy
  */
 
-
-
-
-
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
@@ -285,8 +281,6 @@ textarea,
 
 textarea { resize: vertical;}
 
-
-
 /*-----------------------------------*\
   #BASE
 \*-----------------------------------*/
@@ -313,8 +307,6 @@ body {
     background-color: var(--primary);
     color: var(--on-primary);
 }
-
-
 
 /*-----------------------------------*\
   #TYPOGRAPHY
@@ -419,8 +411,6 @@ body {
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-p-050);
 }
-
-
 
 /*-----------------------------------*\
   #REUSED STYLE
@@ -707,10 +697,6 @@ body {
 
 .btn.fill:hover:not(:focus) { box-shadow: var(--shadow-1); }
 
-
-
-
-
 /**
  * Tooltip
  */
@@ -734,8 +720,6 @@ body {
   0% { opacity: 0; }
   100% { opacity: 1;}
 }
-
-
 
 /*-----------------------------------*\
   #SIDEBAR
@@ -905,8 +889,6 @@ body {
   margin-inline: auto;
 }
 
-
-
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
@@ -960,8 +942,6 @@ body {
 
   .sidebar .fab {display: flex; }
 
-
-
   /**
   * MAIN
   */
@@ -972,16 +952,15 @@ body {
   .main .fab {display: none; }
 }
 
-
 /**
 * responsive for larger than 1400px screen
 */
 
 @media (min-width: 1400px) {
 
-  /**
-  * MAIN
-  */
+/**
+* MAIN
+*/
 
   .main {
     max-width: 1480px;
