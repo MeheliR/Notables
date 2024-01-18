@@ -96,7 +96,7 @@ const findNotebookIndex = function (db, notebookId) {
 
 
 /**
- * Converts a timestamp in millisecond to s humsn-readable relative time string.
+ * Converts a timestamp in millisecond to s human-readable relative time string.
  * 
  * @param {number} millisecond - The timestamp in milliseconds to convert.
  * @returns {string} A string representing the relative time (e.g., "Just now," "5 min ago," "3 hours ago," "2 days ago").
