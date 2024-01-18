@@ -24,6 +24,7 @@ const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-
  * @param {string} name -The name of the notebook.
  * @returns {HTMLElement} - An HTML element representing the navigation item for the notebook.
  */
+
 export const NavItem = function (id, name) {
 
     const /** {HTMLElement} */ $navItem = document.createElement('div');
@@ -68,12 +69,13 @@ export const NavItem = function (id, name) {
      * Notebook edit functionality
      */
     const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
-    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-delete-btn]');
+    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
     $navItemEditBtn.addEventListener('click', makeElemEditable.bind(null, $navItemField));
 
     $navItemField.addEventListener('keydown', function (event) {
 
         if (event.key === 'Enter') {
+
             this.removeAttribute('contendeditable');
 
             // Update edited data in database
@@ -90,7 +92,7 @@ export const NavItem = function (id, name) {
     /**
      * Notebook delete functionality
      */
-    const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn');
+    const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn]');
     $navItemDeleteBtn.addEventListener('click', function () {
 
         const /** {Object} */ modal = DeleteConfirmModal(name);
