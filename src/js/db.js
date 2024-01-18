@@ -88,7 +88,7 @@ export const db = {
         },
 
         /**
-         * Adds a new to a specified notebook in the database.
+         * Adds a new note to a specified notebook in the database.
          * 
          * @function
          * @param {string} notebookId - The ID of the notebook to add the note to.
@@ -215,7 +215,7 @@ export const db = {
             readDB();
 
             const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookId);
-            const /** {number} */ noteIndex = findNoteIndex(notebook, noteID);
+            const /** {number} */ noteIndex = findNoteIndex(notebook, noteId);
 
             notebook.notes.splice(noteIndex, 1);
 
