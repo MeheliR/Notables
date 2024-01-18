@@ -50,7 +50,7 @@ const writeDB = function () {
 
 /**
  * Collection of functions for performing CRUD ( Create, Read, Update, Delete) operations on database.
- * The database state is managed using global varibles and local storage.
+ * The database state is managed using global variables and local storage.
  * 
  * @namespace
  * @property {Object} get - Functions for retrieving data from the database.
